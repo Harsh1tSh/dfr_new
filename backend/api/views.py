@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import openpyxl
 from .models import Student
 # Create your views here.
@@ -7,6 +7,21 @@ from .models import Student
 
 def index(request):
     return HttpResponse("Welcome to my api backend")
+
+# json response example
+def json_response_view(request):
+    data= {
+        'message':'hello, this is json response',
+        'status':'success',
+        'data':{
+            'name':'Alex',
+            'major':'Physics',
+            'age': 167
+        }
+    }
+
+    return JsonResponse(data)
+
 
 # import data
 def import_students_from_excel(request):
